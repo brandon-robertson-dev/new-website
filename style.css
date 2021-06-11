@@ -9,6 +9,10 @@ html, body {
   text-align: center;
 }
 
+h1 {
+  display: inline-block;
+}
+
 a {
   color: steelblue;
   text-decoration: none;
@@ -54,6 +58,7 @@ h2 {
   position: absolute;
   top: 13px;
   left: 50px;
+  animation: slide-in-left 4s;
 }
 
 .top-middle {
@@ -62,12 +67,14 @@ h2 {
   top: 4px;
   left: 0px;
   right: 0px;
+  animation: spin-laptop 3s;
 }
 
 .top-right {
   position: absolute;
   top: 13px;
   right: 50px;
+  animation: slide-in-right 4s;
 }
 
 .bottom-middle {
@@ -75,6 +82,7 @@ h2 {
   bottom: 13px;
   left: 0px;
   right: 0px;
+  animation: slide-in-bottom 4s;
 }
 
 .skills ul {
@@ -106,9 +114,28 @@ img {
   width: 100%;
 }
 
+.animation-slide-zoom-out {
+  position: relative;
+  top: 0px;
+  animation: header-zoom 5s;
+}
+
+.animation-hand-shaking {
+  animation: hand-shake 2s linear 1s;
+}
+
+section {
+  opacity: 1;
+  animation: site-fades-in 6s;
+}
+
 @media only screen and (max-width: 400px) {
   .top-middle {
     display: none;
+  }
+
+  .animation-slide-zoom-out {
+    animation: header-zoom-small 5s;
   }
 }
 
@@ -116,5 +143,130 @@ img {
   .background-border {
     border-left: 25px white solid;
     border-right: 25px white solid;
+  }
+}
+
+@keyframes header-zoom {
+  0% {
+    opacity: 0;
+    top: 300px;
+    transform: scale(2);
+  }
+
+  25% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 1;
+    top: 300px;
+    transform: scale(2);
+  }
+
+  100% {
+    opacity: 1;
+    top: 0px;
+    transform: scale(1);
+  }
+}
+
+@keyframes header-zoom-small {
+  0% {
+    opacity: 0;
+    top: 200px;
+    transform: scale(1.1);
+  }
+
+  25% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 1;
+    top: 200px;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    top: 0px;
+    transform: scale(1);
+  }
+}
+
+@keyframes hand-shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  14%{
+    transform: rotate(-15deg);
+  }
+  28% {
+    transform: rotate(15deg);
+  }
+  42% {
+    transform: rotate(-15deg);
+  }
+  56% {
+    transform: rotate(15deg);
+  }
+  70% {
+    transform: rotate(-15deg);
+  }
+  84% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin-laptop {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes site-fades-in {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 50px;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    right: -150px;
+  }
+  100% {
+    right: 50px;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    bottom: -50px;
+  }
+
+  100% {
+    bottom: 13px;
   }
 }
