@@ -35,8 +35,8 @@ h2 {
   box-sizing: border-box;
   border-top: 50px white solid;
   border-bottom: 50px white solid;
-  border-left: 50px white solid;
-  border-right: 50px white solid;
+  border-left: 25px white solid;
+  border-right: 25px white solid;
   background-color: rgba(255, 245, 101, 0.705);
   min-height: 100%;
   max-height: 100%;
@@ -57,11 +57,13 @@ h2 {
 .top-left {
   position: absolute;
   top: 13px;
-  left: 50px;
-  animation: slide-in-left 4s;
+  left: 0px;
+  right: 0px;
+  animation: very-small-slide-in-top 4s;
 }
 
 .top-middle {
+  display: none;
   position: absolute;
   font-size: 2em;
   top: 4px;
@@ -71,13 +73,15 @@ h2 {
 }
 
 .top-right {
+  display: none;
   position: absolute;
   top: 13px;
-  right: 50px;
-  animation: slide-in-right 4s;
+  right: 25px;
+  animation: small-slide-in-right 4s;
 }
 
 .bottom-middle {
+  display: none;
   position: absolute;
   bottom: 13px;
   left: 0px;
@@ -117,7 +121,7 @@ img {
 .animation-slide-zoom-out {
   position: relative;
   top: 0px;
-  animation: header-zoom 5s;
+  animation: header-zoom-very-small 5s;
 }
 
 .animation-hand-shaking {
@@ -130,56 +134,11 @@ section {
 }
 
 .bottom-middle-alt {
-  display: none;
   position: absolute;
   bottom: 13px;
   left: 0px;
   right: 0px;
   animation: slide-in-bottom 4s;
-}
-
-@media only screen and (max-width: 366px) {
-  .top-middle {
-    display: none;
-  }
-
-  .top-left {
-    animation: very-small-slide-in-top 4s;
-    left: 0px;
-  }
-
-  .top-right {
-    display: none;
-  }
-
-  .bottom-middle {
-    display: none;
-  }
-
-  .bottom-middle-alt {
-    display: block;
-  }
-
-  .animation-slide-zoom-out {
-    animation: header-zoom-small 5s;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .background-border {
-    border-left: 25px white solid;
-    border-right: 25px white solid;
-  }
-
-  .top-left {
-    animation: small-slide-in-left 4s;
-    left: 25px;
-  }
-
-  .top-right {
-    animation: small-slide-in-right 4s;
-    right: 25px;
-  }
 }
 
 @keyframes header-zoom {
@@ -206,11 +165,11 @@ section {
   }
 }
 
-@keyframes header-zoom-small {
+@keyframes header-zoom-very-small {
   0% {
     opacity: 0;
     top: 200px;
-    transform: scale(1.1);
+    transform: scale(0);
   }
 
   25% {
@@ -220,7 +179,31 @@ section {
   50% {
     opacity: 1;
     top: 200px;
-    transform: scale(1.1);
+    transform: scale(1.8);
+  }
+
+  100% {
+    opacity: 1;
+    top: 0px;
+    transform: scale(1);
+  }
+}
+
+@keyframes header-zoom-small {
+  0% {
+    opacity: 0;
+    top: 200px;
+    transform: scale(0) rotate(360deg);
+}
+
+  25% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 1;
+    top: 200px;
+    transform: scale(1) rotate(0deg);
   }
 
   100% {
@@ -330,5 +313,60 @@ section {
 
   100% {
     bottom: 13px;
+  }
+}
+
+@media only screen and (min-width: 395px) {
+  .bottom-middle {
+    display: block;
+  }
+
+  .bottom-middle-alt {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 328px) {
+  .top-left {
+    left: 25px; 
+    right: auto;
+    animation: small-slide-in-left 4s;
+  }
+
+  .top-right {
+    display: block;
+  }
+
+  .animation-slide-zoom-out {
+    animation: header-zoom-small 5s;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .top-middle {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 450px) {
+  .background-border {
+    border-left: 50px white solid;
+    border-right: 50px white solid;
+  }
+
+  .top-left {
+    left: 50px;
+    animation: slide-in-left 4s;
+  }
+
+  .top-right {
+    right: 50px;
+    animation: slide-in-right 4s;
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  .animation-slide-zoom-out {
+    animation: header-zoom 5s;
   }
 }
